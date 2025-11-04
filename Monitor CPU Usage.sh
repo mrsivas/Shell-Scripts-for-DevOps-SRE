@@ -25,6 +25,14 @@ MESSAGE="A critical process has finished."
 ICON="/usr/share/icons/gnome/256x256/status/dialog-warning.png" # Optional icon
 notify-send -i "$ICON" "$TITLE" "$MESSAGE"
 
+
+#3. Sending Messages to Chat Platforms (e.g., Slack)
+#This typically involves using curl to interact with the platform's API or webhooks.
+#Prerequisites: A configured webhook URL for your desired chat platform
+SLACK_WEBHOOK_URL="YOUR_SLACK_WEBHOOK_URL"
+MESSAGE_TEXT="Alert: CPU usage is high on server X! : $cpu_usage%"
+curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"$MESSAGE_TEXT\"}" "$SLACK_WEBHOOK_URL"
+
 #---------------------------(Optional)---------------------------------------------------
 
 fi
